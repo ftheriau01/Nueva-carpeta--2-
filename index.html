@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/le-frog/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#accordion" ).accordion({
+      collapsible: true
+    });
+    $( "#calendar" ).datepicker();
+    $( "#slider" ).slider();
+    
+    $( "#spinner" ).spinner({
+    change: function( event, ui ) {
+    var value = $(this).spinner("value");
+    $( "#progressbar" ).progressbar({
+      value: value
+    });
+  }
+});
+    $( "#progressbar" ).progressbar({
+      value: 0,
+      change: function( event, ui ) {
+        $(this).tooltip({
+          content: "30% completado"
+        });
+      }
+    });
+    var availableTags = [
+      "Blues",
+      "Clásica",
+      "Country",
+      "Electrónica",
+      "Hip Hop",
+      "Jazz",
+      "Metal",
+      "Pop",
+      "Reggae",
+      "Rock"
+    ];
+    $( "#autocomplete" ).autocomplete({
+      source: availableTags
+    });
+  } );
+  </script>
+</head>
+<body>
+  <div id="accordion">
+    <h3>Sección 1</h3>
+    <div>
+      <p>
+        <label for="calendar">Calendario:</label>
+        <input type="text" id="calendar">
+      </p>
+      <p>
+        <label for="slider">Slider:</label>
+        <div id="slider"></div>
+      </p>
+    </div>
+    <h3>Sección 2</h3>
+    <div>
+      <p>
+        <div id="progressbar"></div>
+        <input id="spinner" name="value">
+        
+      </p>
+    </div>
+    <h3>Sección 3</h3>
+    <div>
+      <p>
+        <label for="autocomplete">Autocompletar:</label>
+        <input type="text" id="autocomplete">
+      </p>
+    </div>
+  </div>
+</body>
+</html>
